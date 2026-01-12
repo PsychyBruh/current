@@ -355,7 +355,7 @@ export function initializeLoad() {
   };
 
   const phrasesElement = document.querySelector(".phrases");
-  const phrases = ["hihihi", "<33", "Uhh....", "Xin chào!"];
+  const phrases = ["current", "W site right guys?", "Uhh....", "Hello!"];
   if (phrasesElement) {
     phrasesElement.textContent = phrases[Math.floor(Math.random() * phrases.length)];
   }
