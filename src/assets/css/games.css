@@ -1,0 +1,251 @@
+.games-page {
+  display: none;
+  flex-direction: column;
+  gap: 18px;
+  padding: 36px 44px 60px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+  opacity: 0;
+  transition: opacity 60ms ease;
+}
+
+.games-page.is-visible {
+  display: flex;
+}
+
+.games-page.is-active {
+  opacity: 1;
+}
+
+body.games-view {
+  overflow-y: auto;
+  overscroll-behavior: none;
+  background-color: #050505;
+}
+
+body.games-view .wrapper {
+  overflow-y: auto;
+  overscroll-behavior: none;
+}
+
+body.games-view .main-container,
+body.games-view #bookmarks-container,
+body.games-view #arrow-pointer {
+  display: none !important;
+}
+
+.games-topbar {
+  position: sticky;
+  top: 51px;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  z-index: 1003;
+  display: none;
+  padding: 0 12px;
+  box-sizing: border-box;
+}
+
+body.games-view .games-topbar {
+  display: flex;
+  justify-content: center;
+}
+
+.games-search-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -35px;
+  width: 100%;
+  max-width: min(440px, calc(100% - 160px));
+  min-width: 0;
+  transition: all 0.1s ease;
+}
+
+.games-search-bar input[type="text"] {
+  width: 100%;
+  min-width: 0;
+  padding: 18px 18px 18px 45px;
+  border-radius: 25px;
+  background-color: transparent;
+  border: transparent;
+  color: #e0e0e0;
+  font-size: 14px;
+  outline: none;
+  position: relative;
+  z-index: 3;
+}
+
+.games-search-icon {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ffffff1f;
+  font-size: 18px;
+  z-index: 4;
+}
+
+body.games-view #left-icons,
+body.games-view #right-top-icons {
+  top: 25px;
+}
+
+body.games-view .games-page {
+  padding-top: 130px;
+}
+
+.game-grid-container {
+  margin-top: -10px;
+  padding: 18px;
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 8px;
+}
+
+.game-grid-sentinel {
+  height: 1px;
+  width: 100%;
+  pointer-events: none;
+}
+
+.game-card {
+  border-radius: 10px;
+  background-color: #0c0c0c;
+  width: 100%;
+  min-height: 70px;
+  aspect-ratio: 1 / 1.05;
+  padding: 0;
+  box-sizing: border-box;
+  display: block;
+  transition: all 0.1s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.game-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  overflow: hidden;
+}
+
+.game-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.9);
+  transition: all 1s ease;
+}
+
+.game-card:hover .game-image img {
+  filter: brightness(1);
+}
+
+.game-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  opacity: 0;
+  transition: opacity 150ms ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.game-card:hover::after {
+  opacity: 1;
+}
+
+.game-info h1 {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  font-size: 13px;
+  font-weight: 400;
+  color: #f3f3f3;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.game-info {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  box-sizing: border-box;
+  opacity: 0;
+  transition: opacity 100ms ease;
+  z-index: 2;
+}
+
+.game-card:hover .game-info {
+  opacity: 1;
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #0d0d0d 0%, #161616 50%, #0d0d0d 100%);
+  background-size: 200% 100%;
+  animation: skeleton 1s infinite linear;
+}
+
+.game-card.skeleton-card {
+  cursor: default;
+}
+
+.game-card.skeleton-card .game-image {
+  background-color: #0f0f0f;
+}
+
+.game-card.skeleton-card .game-info {
+  opacity: 1;
+  gap: 6px;
+}
+
+.game-card.skeleton-card:hover {
+  box-shadow: none;
+  transform: none;
+}
+
+.game-card.skeleton-card:hover .game-image img {
+  transform: none;
+}
+
+.no-results-message {
+  color: #b1b1b1;
+  text-align: center;
+  margin: 18px 0 6px;
+  display: none;
+}
+
+.game-load-more-btn {
+  margin: 12px auto 0;
+  margin-top: 40px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 15px;
+  background-color: #0f0f0f;
+  color: #adadad;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  display: none;
+}
+
+.game-load-more-btn:hover {
+  color: #ffffff;
+    background-color: #1f1f1f;
+}
